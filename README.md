@@ -1,6 +1,6 @@
 # Packemon Mobile Web Test
 
-This repo shows that the "types" field is incorrectly set for platform `native`.
+This repo shows that the "types" field is incorrectly set for platform `native` and using subpaths.
 
 The generated `exports` looks like:
 
@@ -11,9 +11,9 @@ The generated `exports` looks like:
     "./mobile": {
       "react-native": {
         "types": "./lib/native/mobile/index.d.ts", <==== This is incorrect
-        "default": "./lib/native/mobile.js"
+        "default": "./lib/native/mobile.js" <==== This is incorrect
       },
-      "default": "./lib/native/mobile.js"
+      "default": "./lib/native/mobile.js" <==== This is incorrect
     },
     "./web": {
       "browser": {
