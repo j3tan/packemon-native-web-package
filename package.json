@@ -1,0 +1,65 @@
+{
+  "name": "packemon-asset-test",
+  "version": "1.0.0",
+  "main": "./lib/node/index.js",
+  "license": "MIT",
+  "dependencies": {
+    "packemon": "3.0.3",
+    "typescript": "^4.9.5"
+  },
+  "scripts": {
+    "build": "NODE_ENV=production packemon build --addExports --no-addFiles --declaration --quiet --loadConfigs",
+    "validate": "packemon validate --no-meta --no-repo --no-license --no-people",
+    "debug": "DEBUG=packemon:* yarn build --no-license --no-repo --no"
+  },
+  "packemon": [
+    {
+      "bundle": true,
+      "format": "lib",
+      "platform": "node"
+    },
+    {
+      "bundle": true,
+      "format": "esm",
+      "platform": "browser",
+      "inputs": {
+        "web": "src/web/index.ts"
+      }
+    },
+    {
+      "bundle": true,
+      "format": "lib",
+      "platform": "native",
+      "inputs": {
+        "mobile": "src/mobile/index.ts"
+      }
+    }
+  ],
+  "packageManager": "yarn@3.4.1",
+  "types": "./lib/node/index.d.ts",
+  "module": "./esm/web.js",
+  "exports": {
+    "./package.json": "./package.json",
+    "./mobile": {
+      "react-native": {
+        "types": "./lib/native/mobile/index.d.ts",
+        "default": "./lib/native/mobile.js"
+      },
+      "default": "./lib/native/mobile.js"
+    },
+    "./web": {
+      "browser": {
+        "types": "./esm/web/index.d.ts",
+        "module": "./esm/web.js",
+        "import": "./esm/web.js"
+      }
+    },
+    ".": {
+      "node": {
+        "types": "./lib/node/index.d.ts",
+        "default": "./lib/node/index.js"
+      },
+      "default": "./lib/node/index.js"
+    }
+  }
+}
