@@ -4,12 +4,13 @@ This repo shows that the "types" field is incorrectly set for platform `native`.
 
 The generated `exports` looks like:
 
-```
-"exports": {
+```json
+{
+  "exports": {
     "./package.json": "./package.json",
     "./mobile": {
       "react-native": {
-        "types": "./lib/native/mobile/index.d.ts",
+        "types": "./lib/native/mobile/index.d.ts", <==== This is incorrect
         "default": "./lib/native/mobile.js"
       },
       "default": "./lib/native/mobile.js"
@@ -29,6 +30,7 @@ The generated `exports` looks like:
       "default": "./lib/node/index.js"
     }
   }
+}
 ```
 
 The generated files look like:
